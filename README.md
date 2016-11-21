@@ -70,7 +70,7 @@ function gmt_donation_invoices_extend_functionality( $id, $status ) {
 	$currency_symbol = $currencies[$options['currency']]['symbol']; // The symbol for the selected currency (ex. $)
 
 }
-add_action( 'gmt_donations_invoice_success', 'gmt_donation_invoices_extend_functionality', 10, 2 );
+add_action( 'gmt_donation_invoice_success', 'gmt_donation_invoices_extend_functionality', 10, 2 );
 ```
 
 
