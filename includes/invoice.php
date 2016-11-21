@@ -11,6 +11,7 @@
 
 		// If the Stripe gateway is activated
 		if ( $button === 'stripe' && $form['options']['gateways_stripe'] === 'on' ) {
+			if ( !gmt_donations_is_ssl() ) return;
 			return
 				'<button ' .
 					'type="submit" ' .
@@ -432,7 +433,7 @@
 		if ( !is_singular( 'gmt_donate_invoices' ) ) return;
 
 		// If Stripe is active, load stripe scripts
-		if ( $options['gateways_stripe'] === 'on' ) {
+		if ( $options['gateways_stripe'] === 'on' && gmt_donations_is_ssl() ) {
 			wp_enqueue_script( 'stripe-checkout', 'https://checkout.stripe.com/checkout.js', null, false, true );
 			wp_enqueue_script( 'gmt-donations-stripe', plugins_url( '../includes/js/gmt-donations-invoice-stripe.js' , __FILE__ ), array( 'stripe-checkout' ), false, true );
 		}
