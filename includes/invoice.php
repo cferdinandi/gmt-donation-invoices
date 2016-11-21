@@ -275,7 +275,7 @@
 		gmt_donations_set_session( 'gmt_invoice_status', $status );
 
 		// Emit action hook
-		do_action( 'gmt_donations_invoice_success', $paypal['id'], $status );
+		do_action( 'gmt_donation_invoice_success', $paypal['id'], $status );
 
 		wp_safe_redirect( $referer );
 		exit;
