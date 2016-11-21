@@ -5,7 +5,7 @@
  * Plugin URI: https://github.com/cferdinandi/gmt-donation-invoices/
  * GitHub Plugin URI: https://github.com/cferdinandi/gmt-donation-invoices/
  * Description: Add invoice capability to the <a href="https://github.com/cferdinandi/gmt-donations">GMT Donations plugin</a>.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Chris Ferdinandi
  * Author URI: http://gomakethings.com
  * License: GPLv3

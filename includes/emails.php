@@ -25,8 +25,8 @@
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 
 		// Email content
-		$subject = str_replace( '[amount]', $currencies[$options['currency']]['symbol'] . number_format( $amount, 2 ), $details['email_subject'] );
-		$message = str_replace( '[invoice]', get_the_permalink( $id ), str_replace( '[amount]', $currencies[$options['currency']]['symbol'] . number_format( $amount, 2 ), $details['email_message'] ) );
+		$subject = str_replace( '[amount]', html_entity_decode( $currencies[$options['currency']]['symbol'] ) . number_format( $amount, 2 ), $details['email_subject'] );
+		$message = str_replace( '[invoice]', get_the_permalink( $id ), str_replace( '[amount]', html_entity_decode( $currencies[$options['currency']]['symbol'] ) . number_format( $amount, 2 ), $details['email_message'] ) );
 		$message = strpos( $details['email_message'], '[invoice]' ) === false ? $message . __( 'Pay this invoice at', 'gmt_donations' ) . ' ' . get_the_permalink( $id ) : $message;
 
 		// Send email
@@ -60,8 +60,8 @@
 		$headers = 'From: ' . $site_name . ' <donotreply@' . $domain . '>' . "\r\n";
 
 		// Email content
-		$subject = str_replace( '[amount]', $currencies[$options['currency']]['symbol'] . number_format( $status['amount'], 2 ), $details['receipt_subject'] );
-		$message = str_replace( '[amount]', $currencies[$options['currency']]['symbol'] . number_format( $status['amount'], 2 ), $details['receipt_message'] );
+		$subject = str_replace( '[amount]', html_entity_decode( $currencies[$options['currency']]['symbol'] ) . number_format( $status['amount'], 2 ), $details['receipt_subject'] );
+		$message = str_replace( '[amount]', html_entity_decode( $currencies[$options['currency']]['symbol'] ) . number_format( $status['amount'], 2 ), $details['receipt_message'] );
 
 		// Send email
 		@wp_mail( sanitize_email( $status['email'] ), $subject, $message, $headers );
