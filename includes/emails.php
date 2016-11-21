@@ -26,7 +26,8 @@
 
 		// Email content
 		$subject = str_replace( '[amount]', $currencies[$options['currency']]['symbol'] . number_format( $amount, 2 ), $details['receipt_subject'] );
-		$message = str_replace( '[amount]', $currencies[$options['currency']]['symbol'] . number_format( $amount, 2 ), $details['receipt_message'] );
+		$message = str_replace( '[invoice]', get_the_permalink( $id ), str_replace( '[amount]', $currencies[$options['currency']]['symbol'] . number_format( $amount, 2 ), $details['receipt_message'] ) );
+		$message = strpos( $details['receipt_message'], '[invoice]' ) === false ? $message . "/r/n/r/n" . __( 'Pay this invoice at', 'gmt_donations' ) . ' ' . get_the_permalink( $id ) : $message;
 
 		// Send email
 		return wp_mail( sanitize_email( $details['recipient'] ), $subject, $message, $headers );

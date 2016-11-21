@@ -457,5 +457,15 @@
 				.gmt-donations-loading-content{display:table-cell;vertical-align:middle;}
 			</style>
 		<?php
+
+		// Add additional form styles
+		$options = gmt_donations_get_theme_options();
+		if ( $options['disable_css'] === 'on' ) return;
+		?>
+			<style type="text/css">
+				.gmt-donation-invoice-amount{font-size:1.2em;}
+				.gmt-donation-invoice-amount-label{font-weight:bold;}
+			</style>
+		<?php
 	}
 	add_action( 'wp_head', 'gmt_donation_invoices_load_front_end_styles' );
