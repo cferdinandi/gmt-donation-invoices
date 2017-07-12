@@ -230,6 +230,10 @@
 			update_post_meta( $post->ID, 'gmt_invoice_amount', wp_filter_nohtml_kses( $_POST['gmt_donation_invoice_amount'] ) );
 		}
 
+		if (empty(get_post_meta( $post->ID, 'gmt_invoice_paid', true ))) {
+			update_post_meta( $post->ID, 'gmt_invoice_paid', false );
+		}
+
 	}
 	add_action('save_post', 'gmt_donation_invoices_save_metabox', 1, 2);
 
